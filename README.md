@@ -1,6 +1,6 @@
 # Trabalho Final - Estruturas de Dados
 
-**Aviso Importante sobre a Implementação (Ponto Extra):** Informamos que todo o projeto foi desenvolvido cumprindo os requisitos extras propostos. Os três programas não utilizam vetores estáticos, sendo integralmente implementados com **Alocação Dinâmica, Nós Encadeados, ponteiros, 'malloc' e 'free'** (Lista, Pilha e Fila Circular).
+**Aviso Importante sobre a Implementação (Ponto Extra):** Informamos que todo o projeto foi desenvolvido cumprindo os requisitos extras propostos. Os três programas não utilizam vetores estáticos, sendo integralmente implementados com **Alocação Dinâmica, Nós Encadeados, ponteiros, malloc e free** (Lista, Pilha e Fila Circular).
 
 ## Integrantes do Grupo
 * [Davi Lopes Amorim]
