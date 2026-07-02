@@ -67,4 +67,3 @@ Dificuldades Encontradas
 Gerenciamento de Memória: O maior desafio técnico foi garantir que não houvesse memory leaks (vazamentos de memória). Foi necessário implementar a lógica do free com muito cuidado, especialmente nas funções de re-encadeamento das listas e ao encerrar o sistema, garantindo que todos os nós fossem devolvidos ao sistema operacional com segurança.
 
 Lógica Circular: Entender a manipulação de ponteiros na Fila Circular (Trabalho C) para que o programa não perdesse a referência do inicio e do fim ao rotacionar os processos exigiu testes rigorosos de teste de mesa.
-Lógica Circular: Entender a manipulação de ponteiros na Fila Circular para que o programa não perdesse a referência do inicio e do fim ao rotacionar os processos.
