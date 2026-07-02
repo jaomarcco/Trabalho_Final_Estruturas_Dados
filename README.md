@@ -8,7 +8,7 @@
 * [João Marcos de Jesus Santos]
 * [Joel Pereira Costa]
 * **Turma:** [Engenharia de Computaçao]
-* **Link do Vídeo de Apresentação:** [-]
+* **Link do Vídeo de Apresentação:** [https://youtu.be/eY7EozCtn1o?si=cA9nnTapaY_suMEA]
 
 ---
 
