@@ -30,8 +30,36 @@
 
 ## ⚙️ Instruções de Compilação e Execução
 
-Para rodar qualquer um dos programas, certifique-se de ter um compilador C (como o GCC) instalado na sua máquina. 
+Para rodar os programas, certifique-se de ter um compilador C (como o GCC) instalado na sua máquina. Abra o terminal na pasta de cada trabalho e execute os comandos abaixo:
 
-**Exemplo de compilação via terminal (Linux/Mac/MinGW):**
+### 1. Trabalho A: Playlist de Músicas
 ```bash
-gcc trabalho_a.c -o trabalho_a
+gcc trabalho_a.c -o trabalho_a.exe
+.\trabalho_a.exe
+
+```
+### 2. Trabalho B: Chamadas de Emergência
+```bash
+gcc trabalho_b.c -o trabalho_b.exe
+.\trabalho_b.exe
+
+```
+### 3. Trabalho B: Escalonador de Processos
+```Bash
+gcc trabalho_c.c -o trabalho_c.exe
+.\trabalho_c.exe
+
+```
+⚠️ Observações sobre o Funcionamento
+Menus Interativos: Todos os sistemas possuem menus numéricos protegidos contra entradas inválidas de caracteres, evitando loops infinitos.
+
+Cores e Interface (Ponto Extra Geral): Implementamos códigos de escape ANSI para colorir os painéis e feedbacks do terminal.
+
+Persistência de Dados: Os sistemas possuem salvamento automático. Para que os arquivos .csv sejam carregados e salvos corretamente, o programa deve ser executado no mesmo diretório em que o arquivo de texto se encontra.
+
+---
+
+🚧 Dificuldades Encontradas
+Gerenciamento de Memória: O maior desafio técnico foi garantir que não houvesse memory leaks (vazamentos de memória). Foi necessário implementar a lógica do free com muito cuidado, especialmente nas funções de re-encadeamento das listas e ao encerrar o sistema, garantindo que todos os nós fossem devolvidos ao sistema operacional com segurança.
+
+Lógica Circular: Entender a manipulação de ponteiros na Fila Circular para que o programa não perdesse a referência do inicio e do fim ao rotacionar os processos.
