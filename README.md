@@ -44,7 +44,7 @@ gcc trabalho_b.c -o trabalho_b.exe
 .\trabalho_b.exe
 
 ```
-### 3. Trabalho B: Escalonador de Processos
+### 3. Trabalho C: Escalonador de Processos
 ```Bash
 gcc trabalho_c.c -o trabalho_c.exe
 .\trabalho_c.exe
