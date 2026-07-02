@@ -7,7 +7,7 @@
 #define COR_VERMELHA "\x1b[31m"
 #define COR_RESET "\x1b[0m"
 
-#define QUANTUM 10 
+#define QUANTUM 10
 
 typedef struct Processo {
     int pid;
@@ -61,11 +61,11 @@ void adicionarProcesso(FilaCircular *f) {
     if (f->quantidade == 0) {
         f->inicio = novoNo;
         f->fim = novoNo;
-        novoNo->prox = f->inicio; 
+        novoNo->prox = f->inicio;
     } else {
         f->fim->prox = novoNo;
         f->fim = novoNo;
-        novoNo->prox = f->inicio; 
+        novoNo->prox = f->inicio;
     }
     f->quantidade++;
     printf(COR_VERDE "[SUCESSO] Processo enfileirado!\n" COR_RESET);
@@ -91,7 +91,7 @@ void executarProcesso(FilaCircular *f) {
             f->fim = NULL;
         } else {
             f->inicio = atual->prox;
-            f->fim->prox = f->inicio; 
+            f->fim->prox = f->inicio;
         }
         free(atual);
         f->quantidade--;
@@ -117,38 +117,37 @@ void listarProcessos(FilaCircular *f) {
     }
 }
 
-void liberarFila(FilaCircular *f) {
-    if (f->quantidade == 0) return;
-    NoFila *atual = f->inicio;
-    for (int i = 0; i < f->quantidade; i++) {
-        NoFila *temp = atual;
-        atual = atual->prox;
-        free(temp);
+void salvarCSV(FilaCircular *f, const char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "w");
+    if (!arquivo) {
+        printf(COR_VERMELHA "[ERRO] Nao foi possivel criar o arquivo CSV.\n" COR_RESET);
+        return;
     }
+
+    if (f->quantidade > 0) {
+        NoFila *atual = f->inicio;
+        for (int i = 0; i < f->quantidade; i++) {
+            fprintf(arquivo, "%d;%s;%d;%d\n", 
+                    atual->dados.pid, atual->dados.nome, 
+                    atual->dados.prioridade, atual->dados.tempoRestante);
+            atual = atual->prox;
+        }
+    }
+    fclose(arquivo);
+    printf(COR_VERDE "[OK] Base de dados do Escalonador salva em CSV.\n" COR_RESET);
 }
 
-int main() {
-    FilaCircular escalonador;
-    inicializarFila(&escalonador);
-    int opcao;
+void carregarCSV(FilaCircular *f, const char *nomeArquivo) {
+    FILE *arquivo = fopen(nomeArquivo, "r");
+    if (!arquivo) return;
 
-    do {
-        printf("\n" COR_AZUL "=== ESCALONADOR ROUND-ROBIN ===" COR_RESET "\n");
-        printf("Processos em fila: %d\n", escalonador.quantidade);
-        printf("[1] Adicionar Processo\n[2] Executar Ciclo (Quantum: %ds)\n", QUANTUM);
-        printf("[3] Listar Processos\n[0] Sair\nEscolha: ");
-        
-        if(scanf("%d", &opcao) != 1) { limparBuffer(); opcao = -1; }
-        limparBuffer();
-
-        switch(opcao) {
-            case 1: adicionarProcesso(&escalonador); break;
-            case 2: executarProcesso(&escalonador); break;
-            case 3: listarProcessos(&escalonador); break;
-            case 0: liberarFila(&escalonador); printf("Sistema encerrado.\n"); break;
-            default: printf(COR_VERMELHA "Opcao invalida!\n" COR_RESET);
-        }
-    } while (opcao != 0);
+    Processo p;
+    while (fscanf(arquivo, "%d;%[^;];%d;%d\n", &p.pid, p.nome, &p.prioridade, &p.tempoRestante) == 4) {
+        NoFila *novoNo = (NoFila *)malloc(sizeof(NoFila));
+        if (novoNo) {
+            novoNo->dados = p;
+            
+            if (f->quantidade == 0) {
 
     return 0;
 }
