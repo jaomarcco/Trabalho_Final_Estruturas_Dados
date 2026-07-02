@@ -148,6 +148,60 @@ void carregarCSV(FilaCircular *f, const char *nomeArquivo) {
             novoNo->dados = p;
             
             if (f->quantidade == 0) {
+                f->inicio = novoNo;
+                f->fim = novoNo;
+                novoNo->prox = f->inicio;
+            } else {
+                f->fim->prox = novoNo;
+                f->fim = novoNo;
+                novoNo->prox = f->inicio;
+            }
+            f->quantidade++;
+        }
+    }
+    fclose(arquivo);
+    printf(COR_VERDE "[SISTEMA] Registros locais carregados com sucesso.\n" COR_RESET);
+}
+
+void liberarFila(FilaCircular *f) {
+    if (f->quantidade == 0) return;
+    NoFila *atual = f->inicio;
+    for (int i = 0; i < f->quantidade; i++) {
+        NoFila *temp = atual;
+        atual = atual->prox;
+        free(temp);
+    }
+}
+
+int main() {
+    FilaCircular escalonador;
+    inicializarFila(&escalonador);
+    
+    carregarCSV(&escalonador, "dados_c.csv");
+    
+    int opcao;
+
+    do {
+        printf("\n" COR_AZUL "=== ESCALONADOR ROUND-ROBIN ===" COR_RESET "\n");
+        printf("Processos em fila: %d\n", escalonador.quantidade);
+        printf("[1] Adicionar Processo\n[2] Executar Ciclo (Quantum: %ds)\n", QUANTUM);
+        printf("[3] Listar Processos\n[0] Sair\nEscolha: ");
+        
+        if(scanf("%d", &opcao) != 1) { limparBuffer(); opcao = -1; }
+        limparBuffer();
+
+        switch(opcao) {
+            case 1: adicionarProcesso(&escalonador); break;
+            case 2: executarProcesso(&escalonador); break;
+            case 3: listarProcessos(&escalonador); break;
+            case 0: 
+                salvarCSV(&escalonador, "dados_c.csv");
+                liberarFila(&escalonador); 
+                printf("Sistema encerrado.\n"); 
+                break;
+            default: printf(COR_VERMELHA "Opcao invalida!\n" COR_RESET);
+        }
+    } while (opcao != 0);
 
     return 0;
 }
