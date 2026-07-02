@@ -60,7 +60,13 @@ Persistência de Dados: Os sistemas possuem salvamento automático. Para que os 
 
 ---
 
-Dificuldades Encontradas
+⚠️ Limitações Conhecidas
+
+Especificação CSV: Para manter a leveza do sistema de arquivos e focar na lógica das estruturas de dados dinâmicas na memória RAM, o sistema utiliza uma versão simplificada do formato CSV (separado por ;). Atualmente, o sistema assume que o utilizador não inserirá o caractere separador (;) nos campos de texto (como Título ou Nome do Processo).
+
+---
+
+⚠️ Dificuldades Encontradas
 
 Gerenciamento de Memória: O maior desafio técnico foi garantir que não houvesse memory leaks (vazamentos de memória). Foi necessário implementar a lógica do free com muito cuidado, especialmente nas funções de re-encadeamento das listas e ao encerrar o sistema, garantindo que todos os nós fossem devolvidos ao sistema operacional com segurança.
 
