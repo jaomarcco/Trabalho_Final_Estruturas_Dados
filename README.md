@@ -8,13 +8,13 @@
 * [João Marcos de Jesus Santos]
 * [Joel Pereira Costa]
 * **Turma:** [Engenharia de Computaçao]
-* **Link do Vídeo de Apresentação:** [Cole aqui o link do YouTube]
+* **Link do Vídeo de Apresentação:** [-]
 
 ---
 
 ## Temas Escolhidos e Descrição Básica
 
-### 1. Trabalho A: Playlist de Músicas (Lista Simplesmente Encadeada)
+### 1. Trabalho A: Playlist de Músicas (Lista Simples Encadeada)
 * **Arquivo:** `/Trabalho_A/trabalho_a.c`
 * **Descrição:** Um sistema de gerenciamento de faixas musicais. Permite cadastrar, buscar, editar, excluir e listar músicas. O sistema mantém a base de dados sincronizada através de arquivos `.csv` e gera estatísticas sobre a duração das faixas.
 
