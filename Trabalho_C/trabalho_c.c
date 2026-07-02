@@ -184,7 +184,7 @@ int main() {
     do {
         printf("\n" COR_AZUL "=== ESCALONADOR ROUND-ROBIN ===" COR_RESET "\n");
         printf("Processos em fila: %d\n", escalonador.quantidade);
-        printf("[1] Adicionar Processo\n[2] Executar Ciclo (Quantum: %ds)\n", QUANTUM);
+        printf("[1] Adicionar Processo\n[2] Executar Ciclo (Quantum: 10s)\n");
         printf("[3] Listar Processos\n[0] Sair\nEscolha: ");
         
         if(scanf("%d", &opcao) != 1) { limparBuffer(); opcao = -1; }
